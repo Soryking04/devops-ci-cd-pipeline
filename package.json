@@ -1,20 +1,16 @@
 {
   "name": "devops-ci-cd-pipeline",
   "version": "1.0.0",
-  "description": "��#\u0000 \u0000D\u0000e\u0000v\u0000O\u0000p\u0000s\u0000 \u0000C\u0000I\u0000/\u0000C\u0000D\u0000 \u0000P\u0000i\u0000p\u0000e\u0000l\u0000i\u0000n\u0000e\u0000\r\u0000 \u0000",
+  "description": "Projet DevOps CI/CD Pipeline avec tests et Docker",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Tests passed\""
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Soryking04/devops-ci-cd-pipeline.git"
+  "author": "Sidibe Sory",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Soryking04/devops-ci-cd-pipeline/issues"
-  },
-  "homepage": "https://github.com/Soryking04/devops-ci-cd-pipeline#readme"
+  "devDependencies": {}
 }
