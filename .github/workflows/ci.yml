@@ -1,4 +1,6 @@
-﻿name: CI/CD Pipeline Local Docker
+﻿name: CI/CD Pipeline
+
+# Utiliser Node.js 24 par défaut pour éviter les avertissements
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
@@ -9,7 +11,7 @@ on:
     branches: [develop, main]
 
 jobs:
-  test-build:
+  test-build-publish:
     runs-on: ubuntu-latest
 
     steps:
@@ -31,6 +33,18 @@ jobs:
       - name: Run tests
         run: npm test
 
-      # 5️⃣ Construire l'image Docker localement
-      - name: Build Docker image locally
-        run: docker build -t node-app:staging .
+      # 5️⃣ Connexion au GitHub Container Registry
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GHCR_PAT }}
+
+      # 6️⃣ Construire l'image Docker
+      - name: Build Docker image
+        run: docker build -t ghcr.io/soryking04/devops-ci-cd-pipeline/node-app:staging .
+
+      # 7️⃣ Pousser l'image Docker sur GHCR
+      - name: Push Docker image
+        run: docker push ghcr.io/soryking04/devops-ci-cd-pipeline/node-app:staging
