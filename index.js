@@ -1,8 +1,8 @@
 const express = require("express");
 const app = express();
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+// Route principale
+app.get("/", (req, res) => res.send("Hello World!"));
 
+// Lancer le serveur sur le port 3000
 app.listen(3000, () => console.log("Server running on port 3000"));
